@@ -18,7 +18,7 @@ Note that `VIRTUAL_HOST` environment variable can be added if run with dinghy cl
 Or from docker-compose.yml:
 ```
 sqs:
-  image: feathj/fake-sqs
+  image: oakesja/fake-sqs
   ports:
     - "9494:9494"
   environment:
@@ -33,6 +33,13 @@ The following curl commands can be run to verify that it is working (create queu
 `$ curl http://sqs.docker:9494 -d "Action=SendMessage&QueueUrl=http%3A%2F%2Fsqs.docker%3A9494%2Ftest-queue&MessageBody=testing123&AWSAccessKeyId=access%20key%20id"`  
 `$ curl http://sqs.docker:9494 -d "Action=ReceiveMessage&QueueUrl=http%3A%2F%2Fsqs.docker%3A9494%2Ftest-queue&AWSAccessKeyId=access%20key%20id"`
 
+Build 
+-----
+`docker build -i oakesja/fake-sqs .`
+
+Push to Dockerhub
+-----------------
+`docker push oakesja/fake-sqs`
 
 Related Repos
 -------------
